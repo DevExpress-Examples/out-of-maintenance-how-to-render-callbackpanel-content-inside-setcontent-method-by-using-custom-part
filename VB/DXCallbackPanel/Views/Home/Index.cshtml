@@ -1,0 +1,49 @@
+@using DevExpress.Web.Mvc.UI
+@using DevExpress.Web.Mvc
+@inherits System.Web.Mvc.WebViewPage
+              
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+//<![CDATA[
+    var employeeId = null;
+    function OnListBoxIndexChanged(s, e) {
+        employeeId = lblEmployees.GetValue();
+        if(!callbackPanel.InCallback())
+            callbackPanel.PerformCallback();
+    }
+    function OnBeginCallback(s, e) {
+        e.customArgs["EmployeeID"] = employeeId;
+        employeeId = null;
+    } 
+    function OnEndCallback(s, e) {
+        if(employeeId != null)
+            callbackPanel.PerformCallback();
+    }
+// ]]>
+</script>
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about DevExpress Extensions for ASP.NET MVC visit <a href="http://devexpress.com/Products/NET/Controls/ASP-NET-MVC/" title="ASP.NET MVC Website">http://devexpress.com/Products/NET/Controls/ASP-NET-MVC/</a>.
+
+    @Html.DevExpress().ListBox( settings => {
+        settings.Name = "lblEmployees";
+        settings.Style.Add("float", "left");
+        settings.Width = 150;
+        settings.Height = 250;
+        settings.Properties.EnableClientSideAPI = true;
+
+        settings.Properties.TextField = "Name";
+        settings.Properties.ValueField = "ID";
+        settings.Properties.ValueType = typeof(Int32);
+        settings.SelectedIndex = 0;
+
+        settings.Properties.ClientSideEvents.ValueChanged = "OnListBoxIndexChanged";
+    }).BindList(ViewData["Employees"]).GetHtml()
+
+    
+     @Html.Partial("CallbackPanelPartial", Model)
+</p>
