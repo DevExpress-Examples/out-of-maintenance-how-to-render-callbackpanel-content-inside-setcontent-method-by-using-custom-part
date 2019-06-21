@@ -9,6 +9,9 @@
 * [Index.cshtml](./CS/DXCallbackPanel/Views/Home/Index.cshtml)
 <!-- default file list end -->
 # How to render CallbackPanel content inside SetContent method by using custom PartialView
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/e2995)**
+<!-- run online end -->
 
 
 <p>It is possible to define a custom PartialView, which should be rendered via the Html.Partial method inside the SetContent method.</p><p><strong>See Also:<br />
