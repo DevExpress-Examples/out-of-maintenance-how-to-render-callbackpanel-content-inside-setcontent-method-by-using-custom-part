@@ -10,7 +10,7 @@
 <!-- default file list end -->
 # How to render CallbackPanel content inside SetContent method by using custom PartialView
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e2995)**
+**[[Run Online]](https://codecentral.devexpress.com/e2995/)**
 <!-- run online end -->
 
 
